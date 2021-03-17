@@ -3,14 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Cloud.Services.TransactionService.Functions", "Core.Cloud.Services.TransactionService.Functions\Core.Cloud.Services.TransactionService.Functions.csproj", "{9D3064FE-511F-4CCD-A01E-DB0DD0CE27C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Cloud.Services.TransactionService.Functions", "Core.Cloud.Services.TransactionService.Functions\Core.Cloud.Services.TransactionService.Functions.csproj", "{9D3064FE-511F-4CCD-A01E-DB0DD0CE27C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Cloud.Services.TransactionService.UnitTests", "Core.Cloud.Services.TransactionService.UnitTests\Core.Cloud.Services.TransactionService.UnitTests.csproj", "{38D866D4-758C-4EE7-A1D7-B05988393D07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Cloud.Services.TransactionService.UnitTests", "Core.Cloud.Services.TransactionService.UnitTests\Core.Cloud.Services.TransactionService.UnitTests.csproj", "{38D866D4-758C-4EE7-A1D7-B05988393D07}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BF7B7658-EA90-429D-B723-263A1C273F6C}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core.Cloud.Services.TransactionService.AzureDeploy", "Core.Cloud.Services.TransactionService.AzureDeploy", "{E8013D24-3B4D-4386-AAD2-EBBEBC23A3B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevOps", "AzureDevOps", "{4AEE7A9E-5AB0-495B-A10D-2031C5B79074}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipelines", "Pipelines", "{8E42B761-A4D1-489B-B17C-74C85AAE6BF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +55,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4AEE7A9E-5AB0-495B-A10D-2031C5B79074} = {E8013D24-3B4D-4386-AAD2-EBBEBC23A3B6}
+		{8E42B761-A4D1-489B-B17C-74C85AAE6BF3} = {4AEE7A9E-5AB0-495B-A10D-2031C5B79074}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2283A971-BA92-439E-8FAE-365F58776753}
