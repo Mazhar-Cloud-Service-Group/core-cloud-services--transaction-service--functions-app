@@ -19,7 +19,7 @@ jobs:
       - run: |
           dotnet clean
           dotnet restore
-          dotnet build --no-restore --configuration Release
+          dotnet build --no-restore
           mkdir -p ${{ github.workspace }}/package
           dotnet pack --no-build --no-restore ${{ github.workspace }}/package
       - uses: actions/upload-artifact@v1
