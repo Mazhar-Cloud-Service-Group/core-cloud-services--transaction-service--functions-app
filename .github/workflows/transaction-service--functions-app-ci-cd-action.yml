@@ -17,6 +17,7 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - run: |
+          echo ${{ github.workspace }}
           dotnet clean
           dotnet restore
           dotnet build --no-restore --configuration Release
