@@ -16,14 +16,14 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Install dependencies
-        run: dotnet restore
-      - name: Test with dotnet
-        run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
-      - name: Upload dotnet test results
-        uses: actions/upload-artifact@v2
+      - run: |
+          dotnet restore
+          dotnet build --no-restore --configuration Release
+          dotnet test Tests.csproj --no-build --configuration Release
+          mkdir ${{ github.workspace }}/package
+          dotnet pack --no-build -c Release --output "${{ github.workspace }}/package"
+      - uses: actions/upload-artifact@v1
         with:
-          name: dotnet-results-${{ matrix.dotnet-version }}
-          path: TestResults-${{ matrix.dotnet-version }}
-        # Use always() to always run this step to publish test results when there are test failures
-        if: ${{ always() }}
+          name: nuget
+          path: ${{ github.workspace }}/package
+        name: 'Upload Package'
