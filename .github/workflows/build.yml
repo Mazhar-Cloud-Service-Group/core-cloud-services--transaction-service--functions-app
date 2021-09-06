@@ -20,7 +20,7 @@ jobs:
           dotnet clean
           dotnet restore
           dotnet build --no-restore
-          dotnet pack --no-build --no-restore ${{ github.workspace }}/package
+          dotnet pack --no-build --no-restore --output ${{ github.workspace }}/package
       - uses: actions/upload-artifact@v1
         with:
           name: nuget
