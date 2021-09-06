@@ -18,7 +18,7 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - run: |
           dotnet restore
-          dotnet build --no-restore --configuration
+          dotnet build --no-restore
           mkdir ${{ github.workspace }}/package
           dotnet pack --output "${{ github.workspace }}/package"
       - uses: actions/upload-artifact@v1
