@@ -24,7 +24,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: nuget
-          path: ${{ github.workspace }}/package/math-homework.txt
+          path: ${{ github.workspace }}/package
         name: 'Upload Package'        
         
       - name: Download a single artifact
