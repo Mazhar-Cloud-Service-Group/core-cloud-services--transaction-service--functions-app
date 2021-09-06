@@ -17,10 +17,10 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - run: |
+          dotnet clean
+          dotnet restore
+          dotnet build --no-restore --configuration Release
           mkdir ${{ github.workspace }}/bin/Debug/netcoreapp3.1/package
-          dotnet clean ${{ github.workspace }} -o /bin/Debug/netcoreapp3.1/package
-          dotnet build ${{ github.workspace }} -o /bin/Debug/netcoreapp3.1/package
-          
           dotnet pack --no-build --no-restore ${{ github.workspace }} -o /bin/Debug/netcoreapp3.1/package
       - uses: actions/upload-artifact@v1
         with:
