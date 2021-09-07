@@ -1,4 +1,4 @@
-name: dotnet package
+name: Build package
 
 on: [ push, pull_request ]
 
@@ -22,6 +22,8 @@ jobs:
         run: dotnet restore
       - name: Build solution
         run: dotnet build --no-restore --output ${{ github.workspace }}/package
+      - name: Run unit tests  
+        run: dotnet test --logger trx
       - uses: actions/upload-artifact@v1
         name: 'Upload build package'
         with:
