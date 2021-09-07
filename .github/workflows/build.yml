@@ -2,10 +2,10 @@ name: dotnet package
 
 on: 
   push:
-    branches: '**'
+    branches: ${GITHUB_REF#refs/heads/}
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: '**'
+    branches: ${GITHUB_REF#refs/heads/}
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Clean Solution
         run: dotnet clean
-      - name: Install dependencies
+      - name: Install dependencies $BRANCH_NAME
         run: dotnet restore
       - name: Build solution
         run: dotnet build --no-restore --output ${{ github.workspace }}/package
