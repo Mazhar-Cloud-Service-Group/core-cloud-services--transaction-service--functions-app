@@ -18,12 +18,12 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Clean Solution
         run: dotnet clean
-      - name: Install dependencies ${GITHUB_REF#refs/heads/}
+      - name: Install dependencies
         run: dotnet restore
       - name: Build solution
         run: dotnet build --no-restore --output ${{ github.workspace }}/package
       - name: Run unit tests  
-        run: dotnet test --logger trx
+        run: dotnet test --logger trx --output ${{ github.workspace }}/package
       - uses: actions/upload-artifact@v1
         name: 'Upload build package'
         with:
