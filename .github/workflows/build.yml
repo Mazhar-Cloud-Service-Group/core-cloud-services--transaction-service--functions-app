@@ -1,0 +1,29 @@
+name: dotnet package
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['3.1.x']
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Clean Solution
+        run: dotnet clean
+      - name: Install dependencies ${GITHUB_REF#refs/heads/}
+        run: dotnet restore
+      - name: Build solution
+        run: dotnet build --no-restore --output ${{ github.workspace }}/package
+      - uses: actions/upload-artifact@v1
+        name: 'Upload build package'
+        with:
+          name: Build package
+          path: ${{ github.workspace }}/package
