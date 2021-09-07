@@ -21,9 +21,9 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build solution
-        run: dotnet build --no-restore --output ${{ github.workspace }}/package
+        run: dotnet build --no-restore
       - name: Run unit tests  
-        run: dotnet test --logger trx --output ${{ github.workspace }}/package
+        run: dotnet test --logger trx
       - name: Publish the package
         run: dotnet publish -c Release
       - name: 'Upload http function artifact'
