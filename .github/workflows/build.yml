@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Clean Solution
+      - name: Clean solution
         run: dotnet clean
       - name: Install dependencies
         run: dotnet restore
@@ -26,12 +26,12 @@ jobs:
         run: dotnet test --logger trx --output ${{ github.workspace }}/package
       - name: Publish the package
         run: dotnet publish -c Release
-      - name: 'Upload http function build package'
+      - name: 'Upload http function artifact'
         uses: actions/upload-artifact@v1
         with:
           name: Build Package HttpFunction
           path: ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/bin/Release/netcoreapp3.1/publish/
-      - name: 'Upload unit tests build package'
+      - name: 'Upload unit tests artifact'
         uses: actions/upload-artifact@v1
         with:
           name: Build Package Unit Tests
