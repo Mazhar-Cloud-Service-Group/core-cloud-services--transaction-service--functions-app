@@ -25,7 +25,7 @@ jobs:
       - name: Run unit tests  
         run: dotnet test --logger trx --output ${{ github.workspace }}/package
       - name: Publish the package to GPR
-        run: dotnet publish -c Release -r <RID> --self-contained true
+        run: dotnet publish -c Release
       - uses: actions/upload-artifact@v1
         name: 'Upload build package'
         with:
