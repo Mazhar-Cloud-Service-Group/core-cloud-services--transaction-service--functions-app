@@ -26,8 +26,8 @@ jobs:
         run: dotnet test --logger trx --output ${{ github.workspace }}/package
       - name: Publish the package to GPR
         run: dotnet publish -c Release
-      - uses: actions/upload-artifact@v1
-        name: 'Upload build package'
+      - name: 'Upload build package'
+        uses: ./
         with:
           name: Build Package
           path: |
