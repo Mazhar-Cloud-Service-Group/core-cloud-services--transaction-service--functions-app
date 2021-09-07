@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build solution
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore --output ${{ github.workspace }}/package
       - uses: actions/upload-artifact@v1
         name: 'Upload package'
         with:
