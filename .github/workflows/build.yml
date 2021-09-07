@@ -1,11 +1,6 @@
 name: dotnet package
 
-on: 
-  push:
-    branches: ${GITHUB_REF#refs/heads/}
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: ${GITHUB_REF#refs/heads/}
+on: [ push, pull_request ]
 
 jobs:
   build:
