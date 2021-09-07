@@ -26,10 +26,13 @@ jobs:
         run: dotnet test --logger trx --output ${{ github.workspace }}/package
       - name: Publish the package to GPR
         run: dotnet publish -c Release
-      - name: 'Upload build package'
-        uses: ./
+      - name: 'Upload HttpFunction build package'
+        uses: actions/upload-artifact@v1
         with:
-          name: Build Package
-          path: |
-            ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/bin/Release/netcoreapp3.1/publish/
-            ${{ github.workspace }}/Core.Cloud.Services.TransactionService.UnitTests/bin/Release/netcoreapp3.1/publish/
+          name: Build Package HttpFunction
+          path: ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/bin/Release/netcoreapp3.1/publish/
+      - name: 'Upload Unit Tests build package'
+        uses: actions/upload-artifact@v1
+        with:
+          name: Build Package Unit Tests
+          path: ${{ github.workspace }}/Core.Cloud.Services.TransactionService.UnitTests/bin/Release/netcoreapp3.1/publish/
