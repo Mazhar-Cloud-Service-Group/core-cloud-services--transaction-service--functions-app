@@ -25,7 +25,7 @@ jobs:
       - name: Run unit tests  
         run: dotnet test --logger trx --output ${{ github.workspace }}/package
       - name: Publish the package to GPR
-        run: dotnet publish ${{ github.workspace }}/package
+        run: dotnet publish ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/Core.Cloud.Services.TransactionService.Functions.*proj
       - uses: actions/upload-artifact@v1
         name: 'Upload build package'
         with:
