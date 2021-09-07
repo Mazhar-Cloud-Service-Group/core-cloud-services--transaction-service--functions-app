@@ -27,7 +27,7 @@ jobs:
       - name: Create the package
         run: dotnet pack -c Release ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/Core.Cloud.Services.TransactionService.Functions.*proj
       - name: Publish the package to GPR
-        run: dotnet nuget push ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/Core.Cloud.Services.TransactionService.Functions.*proj/bin/Release/*.nupkg
+        run: dotnet nuget push ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/bin/Release/*.nupkg
       - uses: actions/upload-artifact@v1
         name: 'Upload build package'
         with:
