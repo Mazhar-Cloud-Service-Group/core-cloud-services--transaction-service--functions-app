@@ -30,4 +30,7 @@ jobs:
         name: 'Upload build package'
         with:
           name: Build Package
-          path: ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/bin/Release/netcoreapp3.1/publish/
+          path: |
+            - ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/bin/Release/netcoreapp3.1/publish/
+            - ${{ github.workspace }}/Core.Cloud.Services.TransactionService.UnitTests/bin/Release/netcoreapp3.1/publish/
+            - 
