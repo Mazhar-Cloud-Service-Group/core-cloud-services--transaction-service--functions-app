@@ -1,6 +1,13 @@
 name: dotnet package
 
-on: [ push, pull_request ]
+on: 
+  push:
+    branches: 
+      - sonarqube-devops
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: 
+      - sonarqube-devops
 
 jobs:
   build:
