@@ -23,8 +23,6 @@ jobs:
         run: dotnet restore
       - name: Build solution
         run: dotnet build --no-restore
-      - name: Package build output
-        run: dotnet pack --no-restore --output ${{ github.workspace }}/package
       - uses: actions/upload-artifact@v1
         name: 'Upload package'
         with:
