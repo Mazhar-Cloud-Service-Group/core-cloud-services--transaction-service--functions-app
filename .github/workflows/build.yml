@@ -29,5 +29,5 @@ jobs:
       - uses: actions/upload-artifact@v1
         name: 'Upload build package'
         with:
-          name: Build package
+          name: Build Package
           path: ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/bin/Release/*.nupkg
