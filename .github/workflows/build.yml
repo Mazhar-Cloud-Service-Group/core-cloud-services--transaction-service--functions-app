@@ -26,5 +26,5 @@ jobs:
       - uses: actions/upload-artifact@v1
         name: 'Upload build package'
         with:
-          name: Intelliworks build package
+          name: Build package
           path: ${{ github.workspace }}/package
