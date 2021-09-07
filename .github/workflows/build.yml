@@ -23,7 +23,7 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Clean Solution
         run: dotnet clean
-      - name: Install dependencies $BRANCH_NAME
+      - name: Install dependencies ${GITHUB_REF#refs/heads/}
         run: dotnet restore
       - name: Build solution
         run: dotnet build --no-restore --output ${{ github.workspace }}/package
