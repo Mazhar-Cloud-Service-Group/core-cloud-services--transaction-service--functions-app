@@ -25,9 +25,9 @@ jobs:
       - name: Run unit tests  
         run: dotnet test --logger trx --output ${{ github.workspace }}/package
       - name: Create the package
-        run: dotnet pack -c Release ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/Core.Cloud.Services.TransactionService.Functions.*proj
+        run: dotnet pack -c Release ${{ github.workspace }}/package
       - uses: actions/upload-artifact@v1
         name: 'Upload build package'
         with:
           name: Build package
-          path: ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/bin/Release/*.nupkg
+          path: ${{ github.workspace }}/package
