@@ -1,4 +1,4 @@
-name: Build package
+name: Intelliworks build package
 
 on: [ push, pull_request ]
 
@@ -24,14 +24,14 @@ jobs:
         run: dotnet build --no-restore --output ${{ github.workspace }}/package
       - name: Run unit tests  
         run: dotnet test --logger trx --output ${{ github.workspace }}/package
-      - name: Publish the package to GPR
+      - name: Publish the package
         run: dotnet publish -c Release
-      - name: 'Upload HttpFunction build package'
+      - name: 'Upload http function build package'
         uses: actions/upload-artifact@v1
         with:
           name: Build Package HttpFunction
           path: ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/bin/Release/netcoreapp3.1/publish/
-      - name: 'Upload Unit Tests build package'
+      - name: 'Upload unit tests build package'
         uses: actions/upload-artifact@v1
         with:
           name: Build Package Unit Tests
