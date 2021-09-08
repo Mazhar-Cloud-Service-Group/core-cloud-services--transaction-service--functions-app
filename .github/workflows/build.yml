@@ -36,3 +36,9 @@ jobs:
         with:
           name: Build Package Unit Tests
           path: ${{ github.workspace }}/Core.Cloud.Services.TransactionService.UnitTests/bin/Release/netcoreapp3.1/publish/
+      - name: Azure Pipelines Action
+        uses: Azure/pipelines@v1
+        with:
+          azure-devops-project-url: https://dev.azure.com/mazharaspnet/mazharaspnet
+          azure-pipeline-name: 'Mazhar-Cloud-Service-Group.core-cloud-services--transaction-service--functions-app'
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
