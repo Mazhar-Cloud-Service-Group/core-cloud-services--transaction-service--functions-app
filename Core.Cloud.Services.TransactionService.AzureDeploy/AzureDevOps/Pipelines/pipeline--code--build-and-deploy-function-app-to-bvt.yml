@@ -1,12 +1,5 @@
-pr: none
 trigger:
- batch: true
- branches:
-   include:
-     - develop
- paths:
-  include:
-    - Core.Cloud.Services.TransactionService.AzureDeploy/*
+- develop
 
 pool:
   vmImage: ubuntu-latest
