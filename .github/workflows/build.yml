@@ -1,0 +1,44 @@
+name: Intelliworks build package
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['3.1.x']
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Clean solution
+        run: dotnet clean
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build solution
+        run: dotnet build --no-restore
+      - name: Run unit tests  
+        run: dotnet test --logger trx
+      - name: Publish the package
+        run: dotnet publish -c Release
+      - name: 'Upload http function artifact'
+        uses: actions/upload-artifact@v1
+        with:
+          name: Build Package HttpFunction
+          path: ${{ github.workspace }}/Core.Cloud.Services.TransactionService.Functions/bin/Release/netcoreapp3.1/publish/
+      - name: 'Upload unit tests artifact'
+        uses: actions/upload-artifact@v1
+        with:
+          name: Build Package Unit Tests
+          path: ${{ github.workspace }}/Core.Cloud.Services.TransactionService.UnitTests/bin/Release/netcoreapp3.1/publish/
+      - name: Azure Pipelines Action
+        uses: Azure/pipelines@v1
+        with:
+          azure-devops-project-url: https://dev.azure.com/mazharaspnet/mazharaspnet
+          azure-pipeline-name: 'Mazhar-Cloud-Service-Group.core-cloud-services--transaction-service--functions-app'
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}

@@ -1,5 +1,12 @@
+pr: none
 trigger:
-- develop
+ batch: true
+ branches:
+   include:
+     - develop
+ paths:
+  include:
+    - Core.Cloud.Services.TransactionService.AzureDeploy/*
 
 pool:
   vmImage: ubuntu-latest
@@ -10,3 +17,4 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
